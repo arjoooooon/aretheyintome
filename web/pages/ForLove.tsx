@@ -4,17 +4,17 @@ import { Inter } from 'next/font/google'
 const inter = Inter({ subsets: ['latin'] })
 
 const MessageText = () => {
-    return (
-        <form className='w-max'>
-            <input type="text" className='shadow appearance-none border text-primary rounded w-max py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline'></input>
-        </form>
-    )
+  return (
+    <form className='w-max'>
+      <input type="text" className='shadow appearance-none border text-primary rounded w-max py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline'></input>
+    </form>
+  )
 }
 
-export default function AboutUs() {
-    return (
-        <main>
-          <header>
+export default function Home() {
+  return (
+    <main>
+      <header>
         <nav className="px-4 lg:px-6 py-2.5 bg-background_secondary">
           <div className="flex flex-wrap justify-between items-center mx-auto max-w-screen-xl">
             <a href = "/">
@@ -43,23 +43,31 @@ export default function AboutUs() {
           </div>
         </nav>
       </header>
-            <div className="container my-auto mx-auto px-6 bg-background w-screen h-screen">
-      <h1 className="text-3xl font-bold mb-4">About Us</h1>
-      <p className="text-lg mb-4">
-        We are a team of passionate individuals dedicated to creating innovative and intuitive software solutions for businesses of all sizes. With years of experience and a focus on customer satisfaction, we strive to exceed expectations and deliver exceptional results.
-      </p>
-      <p className="text-lg mb-4">
-        Our mission is to empower businesses with cutting-edge technology and help them succeed in an ever-evolving digital landscape. We believe in creating meaningful and long-lasting relationships with our clients, and we are committed to providing the highest level of service and support.
-      </p>
-      <h2 className="text-2xl font-bold mb-4">Our Team</h2>
-      <p className="text-lg mb-4">
-        Our team consists of talented and experienced developers, designers, and project managers who are passionate about what they do. We value collaboration and creativity, and we are constantly pushing ourselves to learn and grow.
-      </p>
-      <p className="text-lg mb-4">
-        We believe that the success of our clients is our success, and we are dedicated to helping them achieve their goals. Whether you're a small startup or a large corporation, we have the expertise and resources to help you succeed.
-      </p>
-    </div>
-        </main>
-    )
-}
+      <div id='pageWrapper' className='w-screen h-screen bg-background'>
+        <div id='title' className='pl-20 pt-20'>
+          <h1 className='text-4xl text-gray-200 text-secondary font-bold'>Are They Into Me?</h1>
+          <h2 className='text-gray-100 mt-2 text-secondary'>An AI product brought to you with love 💕</h2>
+        </div>
+        <div className="grid grid-flow-col auto-cols-2">
+          <div className='sm:justify-left px-10 mt-10'>
+            <div className='text-gray-700 font-bold text-primary'>Add your conversation here<div />
+              <br />
+              <div>
+                <textarea className="textarea textarea-bordered textarea-lg py-2 px-2 w-full shadow appearance-none border text-gray-700" ></textarea>
+              </div>
+              <br />
+              <button className="relative hover:bg-gray-100 text-gray-800 font-semibold py-2 px-4 border border-gray-400 rounded shadow">
+                Generate Response
+              </button></div>
+          </div>
 
+          <div className='sm:justify-left px-10 mt-10'>
+            <div className='text-gray-100 font-bold text-primary'>Response
+              <br />
+            </div>
+          </div>
+        </div>
+      </div>
+    </main>
+  )
+}
