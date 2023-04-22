@@ -1,17 +1,48 @@
 import Image from 'next/image'
+import React, { useState } from 'react';
 import { Inter } from 'next/font/google'
 
 const inter = Inter({ subsets: ['latin'] })
 
-const MessageText = () => {
+const FormComponent = (props) => {
+  const [text, setText] = useState('')
+
+  const submitForm = (e) => {
+    e.preventDefault();
+    console.log(text);
+
+    fetch('http://localhost:8080/classify', {
+    method: 'POST',
+    headers: {
+        'Accept': 'application/json',
+        'Content-Type': 'application/json'
+    },
+    body: JSON.stringify({ "text": text })
+})
+   .then(response => response.json())
+   .then(response => props.updateResponse(response));
+  }
+
   return (
-    <form className='w-max'>
-      <input type="text" className='shadow appearance-none border text-primary rounded w-max py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline'></input>
-    </form>
-  )
+    <div>
+      <div className='text-gray-700 font-bold text-primary'>Add your conversation here</div>
+        <form onSubmit={submitForm}>
+          <br />
+          <div>
+            <input className=" textarea-bordered textarea-lg py-2 px-2 w-full shadow appearance-none border text-primary" value={text} onChange={(e) => setText(e.target.value)}></input>
+          </div>
+          <br />
+          <button className="relative hover:bg-gray-100 text-primary font-semibold py-2 px-4 border border-gray-400 rounded shadow" onClick={submitForm}>
+            Generate Response
+          </button>
+        </form>
+    </div>
+  );
 }
 
 export default function Home() {
+  const [response, setResponse] = useState('');
+
   return (
     <main>
       <header>
@@ -43,7 +74,6 @@ export default function Home() {
           </div>
         </nav>
       </header>
-
       <div className="relative isolate px-6 pt-14 lg:px-8 h-screen w-screen">
         {/* <div
           className="absolute inset-x-0 -top-40 -z-10 transform-gpu overflow-hidden blur-3xl sm:-top-80"
