@@ -4,14 +4,14 @@ import { Inter } from 'next/font/google'
 
 const inter = Inter({ subsets: ['latin'] })
 
-const FormComponent = () => {
+const FormComponent = (props) => {
   const [text, setText] = useState('')
 
   const submitForm = (e) => {
     e.preventDefault();
     console.log(text);
 
-    fetch('http://localhost:5000', {
+    fetch('http://localhost:8080/classify', {
     method: 'POST',
     headers: {
         'Accept': 'application/json',
@@ -20,7 +20,7 @@ const FormComponent = () => {
     body: JSON.stringify({ "text": text })
 })
    .then(response => response.json())
-   .then(response => console.log(JSON.stringify(response)))
+   .then(response => props.updateResponse(response));
   }
 
   return (
@@ -29,10 +29,10 @@ const FormComponent = () => {
         <form onSubmit={submitForm}>
           <br />
           <div>
-            <input className="textarea textarea-bordered textarea-lg py-2 px-2 w-full shadow appearance-none border text-gray-700" value={text} onChange={(e) => setText(e.target.value)}></input>
+            <input className=" textarea-bordered textarea-lg py-2 px-2 w-full shadow appearance-none border text-primary" value={text} onChange={(e) => setText(e.target.value)}></input>
           </div>
           <br />
-          <button className="relative hover:bg-gray-100 text-gray-800 font-semibold py-2 px-4 border border-gray-400 rounded shadow" onClick={submitForm}>
+          <button className="relative hover:bg-gray-100 text-primary font-semibold py-2 px-4 border border-gray-400 rounded shadow" onClick={submitForm}>
             Generate Response
           </button>
         </form>
@@ -41,6 +41,8 @@ const FormComponent = () => {
 }
 
 export default function Home() {
+  const [response, setResponse] = useState('');
+
   return (
     <main>
       <header>
@@ -79,12 +81,15 @@ export default function Home() {
         </div>
         <div className="grid grid-flow-col auto-cols-2">
           <div className='sm:justify-left px-10 mt-10'>
-            <FormComponent />
+            <FormComponent updateResponse={setResponse}/>
           </div>
 
           <div className='sm:justify-left px-10 mt-10'>
             <div className='text-gray-100 font-bold text-primary'>Response
               <br />
+              <div>
+                {response.prediction}
+              </div>
             </div>
           </div>
         </div>
