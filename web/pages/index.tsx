@@ -1,14 +1,43 @@
 import Image from 'next/image'
+import React, { useState } from 'react';
 import { Inter } from 'next/font/google'
 
 const inter = Inter({ subsets: ['latin'] })
 
-const MessageText = () => {
+const FormComponent = () => {
+  const [text, setText] = useState('')
+
+  const submitForm = (e) => {
+    e.preventDefault();
+    console.log(text);
+
+    fetch('http://localhost:5000', {
+    method: 'POST',
+    headers: {
+        'Accept': 'application/json',
+        'Content-Type': 'application/json'
+    },
+    body: JSON.stringify({ "text": text })
+})
+   .then(response => response.json())
+   .then(response => console.log(JSON.stringify(response)))
+  }
+
   return (
-    <form className='w-max'>
-      <input type="text" className='shadow appearance-none border text-primary rounded w-max py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline'></input>
-    </form>
-  )
+    <div>
+      <div className='text-gray-700 font-bold text-primary'>Add your conversation here</div>
+        <form onSubmit={submitForm}>
+          <br />
+          <div>
+            <input className="textarea textarea-bordered textarea-lg py-2 px-2 w-full shadow appearance-none border text-gray-700" value={text} onChange={(e) => setText(e.target.value)}></input>
+          </div>
+          <br />
+          <button className="relative hover:bg-gray-100 text-gray-800 font-semibold py-2 px-4 border border-gray-400 rounded shadow" onClick={submitForm}>
+            Generate Response
+          </button>
+        </form>
+    </div>
+  );
 }
 
 export default function Home() {
@@ -50,15 +79,7 @@ export default function Home() {
         </div>
         <div className="grid grid-flow-col auto-cols-2">
           <div className='sm:justify-left px-10 mt-10'>
-            <div className='text-gray-700 font-bold text-primary'>Add your conversation here<div />
-              <br />
-              <div>
-                <textarea className="textarea textarea-bordered textarea-lg py-2 px-2 w-full shadow appearance-none border text-gray-700" ></textarea>
-              </div>
-              <br />
-              <button className="relative hover:bg-gray-100 text-gray-800 font-semibold py-2 px-4 border border-gray-400 rounded shadow">
-                Generate Response
-              </button></div>
+            <FormComponent />
           </div>
 
           <div className='sm:justify-left px-10 mt-10'>
