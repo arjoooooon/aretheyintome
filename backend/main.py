@@ -2,7 +2,7 @@ from flask import Flask
 import json
 import cohere
 from cohere.classify import Example
-import cohere_classifier
+import backend.cohere_classifier2 as cohere_classifier2
 
 app = Flask(__name__)
 
@@ -12,7 +12,7 @@ def index():
 
 @app.route('/classify')
 def classify():
-    return cohere_classifier.classify_friendzone
+    return cohere_classifier2.classify_friendzone
 
 
 app.run(host="0.0.0.0", port=8080)
