@@ -6,12 +6,13 @@ import Header from '../components/header';
 const inter = Inter({ subsets: ['latin'] })
 const homeMessages = [
   'Hey ;)',
-  'Would you like to grab some coffee?',
-  "I'm kinda busy",
-  'I have a boyfriend',
-  'Is that an invitation?',
+  'Wanna get coffee?',
+  "I'm kinda busy :/",
+  'I have a boyfriend...',
+  'It\'s a date :)',
   "I thought you'd never ask <3",
-  "Do you want to play heads up with me?"
+  "We should hang out sometime!",
+  "Ew, no."
 ]
 
 
@@ -19,21 +20,23 @@ export default function Home() {
   return (
     <main>
       <Header /> 
-      <div className="relative isolate h-screen w-screen bg-background">
+      <div className="relative isolate h-screen w-screen bg-background font-mono">
         <div className="lg:py-56">
           <div className="text-center">
             <h1 className="text-4xl font-bold tracking-tight text-gray-900 sm:text-6xl text-primary">
-              Are They Into Me?
+              Are they into me?
             </h1>
             <br />
             <div className="flex justify-center">
               <div>
-                <div className="text-xl font-bold text-primary">
+                <div className="text-xl rounded-full px-5 py-1 bg-message_gray text-black font-sans">
                   <Typewriter
                     options={{
                       strings: homeMessages,
                       autoStart: true,
                       loop: true,
+                      delay: 60,
+                      cursorClassName: "text-transparent"
                     }}
                   />
                 </div>
@@ -45,19 +48,19 @@ export default function Home() {
             <div className="mt-10 flex items-center justify-center gap-x-6">
               <a
                 href="/ForLove"
-                className="rounded-md bg-indigo-600 px-3.5 py-2.5 text-sm font-semibold text-primary shadow-sm hover:bg-indigo-500 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-600"
+                className="rounded-md bg-background_secondary px-3.5 py-2.5 text-sm font-semibold text-primary shadow-sm hover:bg-indigo-500 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-600"
               >
                 Love
               </a>
               <a
                 href="/ForLove"
-                className="rounded-md bg-indigo-600 px-3.5 py-2.5 text-sm font-semibold text-primary shadow-sm hover:bg-indigo-500 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-600"
+                className="rounded-md bg-background_secondary px-3.5 py-2.5 text-sm font-semibold text-primary shadow-sm hover:bg-indigo-500 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-600"
               >
                 Work
               </a>
               <a
                 href="/ForLove"
-                className="rounded-md bg-indigo-600 px-3.5 py-2.5 text-sm font-semibold text-primary shadow-sm hover:bg-indigo-500 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-600"
+                className="rounded-md bg-background_secondary px-3.5 py-2.5 text-sm font-semibold text-primary shadow-sm hover:bg-indigo-500 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-600"
               >
                 Friendship
               </a>
