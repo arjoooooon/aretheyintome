@@ -7,6 +7,7 @@ import Image from 'next/image';
 import LeftLogo from '../assets/leftLogo.png';
 import RightLogo from '../assets/rightLogo.png';
 import FlirtGif from '../assets/flirt.gif';
+import BufferingGif from '../assets/buffering.gif';
 
 const inter = Inter({ subsets: ['latin'] })
 const homeMessages = [
@@ -52,7 +53,7 @@ const FormComponent = (props) => {
       <form onSubmit={submitForm}>
         <br />
         <div>
-          <textarea ref={textAreaRef} className="textarea-lg py-2 px-2 w-full text-md appearance-none text-primary" value={text} onChange={(e) => setText(e.target.value)}></textarea>
+          <textarea ref={textAreaRef} className="rounded-xl textarea-lg py-2 px-2 w-full text-md appearance-none text-primary" value={text} onChange={(e) => setText(e.target.value)}></textarea>
         </div>
         <br />
         <button className="relative hover:bg-gray-100 text-primary font-semibold py-2 px-4 border border-gray-400 rounded shadow" onClick={submitForm}>
@@ -63,6 +64,21 @@ const FormComponent = (props) => {
   );
 }
 
+const DataReport = (props) => {
+  return (
+    <div className='w-96'>
+      <span className='text-primary'>
+        Classification:   
+      </span>
+      <span className='text-secondary text-2xl ml-5 w-96'>
+        {props.response.prediction} ({(props.response.confidence*100).toFixed(1)}%)
+      </span>
+      <p className='w-33 text-primary mt-5'>
+        {props.response.reason}
+      </p>
+    </div>
+  )
+}
 
 export default function Home() {
   const [response, setResponse] = useState({ 'prediction': 'NA', 'confidence': 0, 'reason': 'Nothing to see here...yet!' })
@@ -98,18 +114,19 @@ export default function Home() {
             </p>
           </div>
         </div>
-        <div className="flex justify-center pt-10 auto-cols-2">
-          <div className='sm:justify-left w-5/12 px-10 mt-10'>
-            <div className='text-gray-100 font-bold text-primary'>Add Your Conversation Here</div>
-            <div className="grid grid-flow-col w-12/12">
-              <FormComponent updateResponse={setResponse} />
-            </div>
-          </div>
-          <div className='flex justify-center pt-10 auto-cols h-screen'>
+        <div className='w-screen h-screen'>
+          <div className="flex justify-center pt-10 auto-cols-2">
             <div className='sm:justify-left w-5/12 px-10 mt-10'>
-              <div className='text-gray-100 font-bold text-primary'>Are they into you?<br /></div>
-              <div className='text-secondary mt-5'>
-                {response.reason}
+              <div className='text-gray-100 font-bold text-primary'>Add Your Conversation Here</div>
+              <div className="grid grid-flow-col w-12/12">
+                <FormComponent updateResponse={setResponse} />
+              </div>
+            </div>
+            <div className='flex justify-center pt-10 auto-cols h-screen'>
+              <div className='sm:justify-left w-max px-10'>
+                <div className='text-gray-100 font-bold text-primary'>Are they into you?<br /></div>
+                {response.prediction === 'NA' ? <Image src={BufferingGif} width={250} height={250} alt="Buffering Gif" /> :
+                  <DataReport response={response} />}
               </div>
             </div>
           </div>
