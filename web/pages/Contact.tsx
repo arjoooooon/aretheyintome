@@ -31,7 +31,7 @@ export default function Contact() {
                             <p className="font-bold mb-2">Join Us</p>
                             <p className="text-gray-500 mb-6">
                                 Work where your mind matters.<br/>
-                                Learn more about who we are, where we're hiring, what it's like to work here,
+                                Learn more about who we are, where we&aposre hiring, what it's like to work here,
                                 and what we offer our employees. When you're ready, submit your resume to apply.
 
                             </p>
