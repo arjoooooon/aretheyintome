@@ -1,56 +1,20 @@
 import Image from 'next/image'
 import React, { useState } from 'react';
-import { Inter } from 'next/font/google'
+import { Inter } from 'next/font/google';
+import Typewriter from 'typewriter-effect';
+import Logo from '../assets/logo.png';
 
 const inter = Inter({ subsets: ['latin'] })
 
-const FormComponent = (props) => {
-  const [text, setText] = useState('')
-
-  const submitForm = (e) => {
-    e.preventDefault();
-    console.log(text);
-
-    fetch('http://localhost:8080/classify', {
-    method: 'POST',
-    headers: {
-        'Accept': 'application/json',
-        'Content-Type': 'application/json'
-    },
-    body: JSON.stringify({ "text": text })
-})
-   .then(response => response.json())
-   .then(response => props.updateResponse(response));
-  }
-
-  return (
-    <div>
-      <div className='text-gray-700 font-bold text-primary'>Add your conversation here</div>
-        <form onSubmit={submitForm}>
-          <br />
-          <div>
-            <input className=" textarea-bordered textarea-lg py-2 px-2 w-full shadow appearance-none border text-primary" value={text} onChange={(e) => setText(e.target.value)}></input>
-          </div>
-          <br />
-          <button className="relative hover:bg-gray-100 text-primary font-semibold py-2 px-4 border border-gray-400 rounded shadow" onClick={submitForm}>
-            Generate Response
-          </button>
-        </form>
-    </div>
-  );
-}
-
 export default function Home() {
-  const [response, setResponse] = useState('');
-
   return (
     <main>
       <header>
         <nav className="px-4 lg:px-6 py-2.5 bg-background_secondary">
           <div className="flex flex-wrap justify-between items-center mx-auto max-w-screen-xl">
-            <a href="/">
-              <img src="" className="mr-3 h-6 sm:h-9" alt="Logo" />
-              <span className="self-center text-xl font-semibold whitespace-nowrap dark:text-white">Are They Into Me</span>
+            <a href="/" className="flex inline">
+              <Image src={Logo} alt="logo" width={50} height={50} />
+              <span className="self-center text-m font-semibold whitespace-nowrap dark:text-white ml-3">AreTheyIntoMe</span>
             </a>
             <div className="hidden justify-between items-center w-full lg:flex lg:w-auto lg:order-1" id="mobile-menu-2">
               <ul className="flex flex-col mt-4 font-medium lg:flex-row lg:space-x-8 lg:mt-0">
@@ -74,7 +38,7 @@ export default function Home() {
           </div>
         </nav>
       </header>
-      <div className="relative isolate px-6 pt-14 lg:px-8 h-screen w-screen">
+      <div className="relative isolate h-screen w-screen">
         {/* <div
           className="absolute inset-x-0 -top-40 -z-10 transform-gpu overflow-hidden blur-3xl sm:-top-80"
           aria-hidden="true">
@@ -86,20 +50,25 @@ export default function Home() {
             }}
           />
         </div> */}
-        <div className="mx-auto w-max py-32 sm:py-48 lg:py-56">
+        <div className="w-screen h-screen lg:py-56 bg-background">
           <div className="text-center">
             <h1 className="text-4xl font-bold tracking-tight text-gray-900 sm:text-6xl text-primary">
               Are They Into Me?
             </h1>
-            <br/>
-            <p className= "animate-typing overflow-hidden whitespace-nowrap border-r-4 border-r-white pr-5 text-xl font-bold text-primary">
-            Wanna go to the gym with me? Sure! <br/>
-            Poker tonight? Humm, maybe next time?
-            {/* I heard you guys are playing poker<br/>
-            ya, we just play for fun, no strategy<br/>
-            wanna come next time? <br/>
-            I'm so down, totally<br/> */}
-            </p>
+            <br />
+            <div className="flex justify-center">
+              <div>
+                <div className="text-xl font-bold text-primary">
+                  <Typewriter
+                    options={{
+                      strings: ['Hey cutie ;)', 'Wanna grab some coffee?'],
+                      autoStart: true,
+                      loop: true,
+                    }}
+                  />
+                </div>
+              </div>
+            </div>
             <p className="mt-6 text-lg leading-8 text-primary">
               For Love, For Work, and For Friendship.
             </p>

@@ -1,17 +1,51 @@
-import Image from 'next/image'
-import { Inter } from 'next/font/google'
+import Image from 'next/image';
+import { Inter } from 'next/font/google';
+import React, { useState } from 'react';
 
 const inter = Inter({ subsets: ['latin'] })
 
-const MessageText = () => {
-  return (
-    <form className='w-max'>
-      <input type="text" className='shadow appearance-none border text-primary rounded w-max py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline'></input>
-    </form>
-  )
+interface FormControl {
+  updateResponse: (text: string) => void;
 }
 
+const FormComponent = (props: FormControl) => {
+  const [text, setText] = useState('')
+
+  const submitForm = (e) => {
+    e.preventDefault();
+    console.log(text);
+
+    fetch('http://localhost:8080/classify', {
+    method: 'POST',
+    headers: {
+        'Accept': 'application/json',
+        'Content-Type': 'application/json'
+    },
+    body: JSON.stringify({ "text": text })
+})
+   .then(response => response.json())
+   .then(response => props.updateResponse(response.prediction));
+  }
+
+  return (
+    <div>
+      <div className='text-gray-700 font-bold text-primary'>Add your conversation here</div>
+        <form onSubmit={submitForm}>
+          <br />
+          <div>
+            <input className=" textarea-bordered textarea-lg py-2 px-2 w-full shadow appearance-none border text-primary" value={text} onChange={(e) => setText(e.target.value)}></input>
+          </div>
+          <br />
+          <button className="relative hover:bg-gray-100 text-primary font-semibold py-2 px-4 border border-gray-400 rounded shadow" onClick={submitForm}>
+            Generate Response
+          </button>
+        </form>
+    </div>
+  );
+}
 export default function Home() {
+  const [response, setResponse] = useState('');
+
   return (
     <main>
       <header>
@@ -49,21 +83,10 @@ export default function Home() {
           <h2 className='text-gray-100 mt-2 text-secondary'>An AI product brought to you with love 💕</h2>
         </div>
         <div className="grid grid-flow-col auto-cols-2">
-          <div className='sm:justify-left px-10 mt-10'>
-            <div className='text-gray-700 font-bold text-primary'>Add your conversation here<div />
-              <br />
-              <div>
-                <textarea className="textarea textarea-bordered textarea-lg py-2 px-2 w-full shadow appearance-none border text-gray-700" ></textarea>
-              </div>
-              <br />
-              <button className="relative hover:bg-gray-100 text-gray-800 font-semibold py-2 px-4 border border-gray-400 rounded shadow">
-                Generate Response
-              </button></div>
-          </div>
-
+          <FormComponent updateResponse={setResponse}/>
           <div className='sm:justify-left px-10 mt-10'>
             <div className='text-gray-100 font-bold text-primary'>Response
-              <br />
+              {response}
             </div>
           </div>
         </div>

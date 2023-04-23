@@ -1,9 +1,11 @@
 from flask import Flask, request, jsonify
+from flask_cors import CORS
 import json
 import cohere
 from cohere_classifier import classify_friendzone
 
 app = Flask(__name__)
+CORS(app)
 
 @app.route('/')
 def index():

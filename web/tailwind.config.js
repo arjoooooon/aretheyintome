@@ -28,7 +28,7 @@ module.exports = {
             borderColor: "transparent"
           },
           "100%": {
-            borderColor: "white"
+            borderColor: "transparent"
           }
         }
       },
@@ -37,7 +37,7 @@ module.exports = {
       }
     },
     colors: {
-      primary: '#05BFDB',
+      primary: '#6E2E42',
       secondary: '#FF6969',
       background: '#FFF9DE',
       background_secondary: '#FFD3B0',
