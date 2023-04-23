@@ -1,4 +1,3 @@
-import Image from 'next/image';
 import { Inter } from 'next/font/google';
 import React, { useState } from 'react';
 import Header from '../components/header';
@@ -34,7 +33,7 @@ const FormComponent = (props: FormControl) => {
       <form onSubmit={submitForm}>
         <br />
         <div>
-          <input className=" textarea-bordered textarea-lg py-2 px-2 w-full shadow appearance-none border text-primary" value={text} onChange={(e) => setText(e.target.value)}></input>
+          <textarea className="rounded-lg textarea-lg py-2 px-2 w-full text-sm appearance-none text-primary" value={text} onChange={(e) => setText(e.target.value)}></textarea>
         </div>
         <br />
         <button className="relative hover:bg-gray-100 text-primary font-semibold py-2 px-4 border border-gray-400 rounded shadow" onClick={submitForm}>
