@@ -40,7 +40,7 @@ def generate_text(user_prompt):
         num_generations=1, 
         prompt= user_prompt,
         max_tokens=500,
-        temperature=0.1,
+        temperature=0.9,
         k=0,
         p=0.1,
         frequency_penalty=0,
