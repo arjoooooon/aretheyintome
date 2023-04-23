@@ -6,6 +6,7 @@ import Image from 'next/image';
 
 import LeftLogo from '../assets/leftLogo.png';
 import RightLogo from '../assets/rightLogo.png';
+import FlirtGif from '../assets/flirt.gif';
 
 const inter = Inter({ subsets: ['latin'] })
 const homeMessages = [
@@ -18,25 +19,6 @@ const homeMessages = [
   "We should hang out sometime!",
   "Ew, no."
 ]
-
-
-const ImageAnimation = () => {
-  const [left, setLeft] = useState(false)
-  useEffect(() => {
-    setTimeout(() => setLeft(!left), 1000)
-  }, [])
-
-  useEffect(() => {
-    setTimeout(() => setLeft(!left), 1000)
-  }, [left])
-
-  return (
-    <div>
-      {left && <Image src={LeftLogo} alt="left logo" width={100} height={200} />}
-      {!left && <Image src={RightLogo} alt="right logo" width={100} height={200} />}
-    </div>
-  )
-}
 
 const FormComponent = (props) => {
   const [text, setText] = useState('')
@@ -91,7 +73,7 @@ export default function Home() {
       <div className="relative isolate h-fit w-screen bg-background font-courier">
         <div className="flex justify-center lg:py-52">
           <div className="text-center">
-            <ImageAnimation />
+            <Image src={FlirtGif} width={100} height={100} alt="Flirt Gif" />
             <h1 className="text-4xl font-bold tracking-tight text-gray-900 sm:text-6xl text-primary">
               Are they into me?
             </h1>
