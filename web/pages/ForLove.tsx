@@ -11,7 +11,7 @@ const FormComponent = (props) => {
     e.preventDefault();
     console.log(text);
 
-    fetch('http://54.153.67.179:8080/classify', {
+    fetch('http://localhost:8080/classify', { //54.153.67.179
       method: 'POST',
       headers: {
         'Accept': 'application/json',

@@ -3,7 +3,7 @@ from flask_cors import CORS
 import json
 import cohere
 
-from cohere_classifier2 import classify_friendzone, but_why
+from cohere_classifier import classify_friendzone, but_why
 
 app = Flask(__name__)
 CORS(app)
