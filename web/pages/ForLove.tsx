@@ -32,14 +32,14 @@ const FormComponent = (props) => {
                 </div>
                 <br />
                 <button className="relative hover:bg-gray-100 text-primary font-semibold py-2 px-4 border border-gray-400 rounded shadow" onClick={submitForm}>
-                    Generate Response
+                    Find Out!
                 </button>
             </form>
         </div>
     );
 }
 export default function ForLove() {
-  const [response, setResponse] = useState({reason: ''});
+  const [response, setResponse] = useState({reason: 'Nothing to see here...yet!'});
 
   return (
     <main>
@@ -53,9 +53,8 @@ export default function ForLove() {
                     </div>
                     </div>
                     <div className='sm:justify-left w-5/12 px-10 mt-10'>
-                    <div className='text-gray-100 font-bold text-primary'>Flirty or Not <br/></div>
-                    <p> We are using a trail API key, which limited 5 API calls per minutes.</p>
-                        <div className='text-gray-100 font-bold text-primary'>
+                    <div className='text-gray-100 font-bold text-primary'>Are they into you?<br/></div>
+                        <div className='text-secondary mt-5'>
                             {response.reason}
                         </div>
                     </div>

@@ -1,7 +1,11 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { Inter } from 'next/font/google';
 import Typewriter from 'typewriter-effect';
 import Header from '../components/header';
+import Image from 'next/image';
+
+import LeftLogo from '../assets/leftLogo.png';
+import RightLogo from '../assets/rightLogo.png';
 
 const inter = Inter({ subsets: ['latin'] })
 const homeMessages = [
@@ -15,14 +19,33 @@ const homeMessages = [
   "Ew, no."
 ]
 
+const ImageAnimation = () => {
+  const [left, setLeft] = useState(false)
+  useEffect(() => {
+    setTimeout(() => setLeft(!left), 1000)
+  }, [])
+
+  useEffect(() => {
+    setTimeout(() => setLeft(!left), 1000)
+  }, [left])
+
+  return (
+    <div>
+      {left && <Image src={LeftLogo} alt="left logo" width={200} height={200} />}
+      {!left && <Image src={RightLogo} alt="right logo" width={200} height={200} />}
+    </div>
+  )
+}
+
 
 export default function Home() {
   return (
     <main>
-      <Header /> 
+      <Header />
       <div className="relative isolate h-screen w-screen bg-background font-mono">
-        <div className="lg:py-56">
+        <div className="flex justify-center lg:py-56">
           <div className="text-center">
+            <ImageAnimation />
             <h1 className="text-4xl font-bold tracking-tight text-gray-900 sm:text-6xl text-primary">
               Are they into me?
             </h1>
@@ -43,28 +66,8 @@ export default function Home() {
               </div>
             </div>
             <p className="mt-6 text-lg leading-8 text-primary">
-              For Love, For Work, and For Friendship.
+              Clarity for the clueless romantic ↓
             </p>
-            <div className="mt-10 flex items-center justify-center gap-x-6">
-              <a
-                href="/ForLove"
-                className="rounded-md bg-background_secondary px-3.5 py-2.5 text-sm font-semibold text-primary shadow-sm hover:bg-indigo-500 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-600"
-              >
-                Love
-              </a>
-              <a
-                href="/ForLove"
-                className="rounded-md bg-background_secondary px-3.5 py-2.5 text-sm font-semibold text-primary shadow-sm hover:bg-indigo-500 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-600"
-              >
-                Work
-              </a>
-              <a
-                href="/ForLove"
-                className="rounded-md bg-background_secondary px-3.5 py-2.5 text-sm font-semibold text-primary shadow-sm hover:bg-indigo-500 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-600"
-              >
-                Friendship
-              </a>
-            </div>
           </div>
         </div>
         {/* <div
