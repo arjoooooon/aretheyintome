@@ -4,18 +4,14 @@ import Header from '../components/header';
 
 const inter = Inter({ subsets: ['latin'] })
 
-interface FormControl {
-  updateResponse: (text: string) => void;
-}
-
-const FormComponent = (props: FormControl) => {
+const FormComponent = (props) => {
   const [text, setText] = useState('')
 
   const submitForm = (e) => {
     e.preventDefault();
     console.log(text);
 
-    fetch('http://localhost:8080/classify', {
+    fetch('http://54.153.67.179:8080/classify', {
       method: 'POST',
       headers: {
         'Accept': 'application/json',
@@ -24,7 +20,7 @@ const FormComponent = (props: FormControl) => {
       body: JSON.stringify({ "text": text })
     })
       .then(response => response.json())
-      .then(response => props.updateResponse(response.prediction));
+      .then(response => props.updateResponse(response));
   }
 
     return (
@@ -43,7 +39,7 @@ const FormComponent = (props: FormControl) => {
     );
 }
 export default function ForLove() {
-  const [response, setResponse] = useState('');
+  const [response, setResponse] = useState({reason: ''});
 
   return (
     <main>
@@ -57,8 +53,8 @@ export default function ForLove() {
                     </div>
                     </div>
                     <div className='sm:justify-left w-5/12 px-10 mt-10'>
-                        <div className='text-gray-100 font-bold text-primary'>Response
-                            {response}
+                        <div className='text-gray-100 font-bold text-primary'>
+                            {response.reason}
                         </div>
                     </div>
                 </div>
