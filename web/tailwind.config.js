@@ -37,10 +37,10 @@ module.exports = {
       }
     },
     colors: {
-      primary: '#6E2E42',
+      primary: '#3f0215',//'#6E2E42',
       secondary: '#FF6969',
-      background: '#FFF9DE',
-      background_secondary: '#FFD3B0',
+      background:'#FFE7E8', //'#FFE8E8',//'#F4BDBD',//'#F3E2E6',//'#FFF9DE',////
+      background_secondary: '#EBC4C4',//'#FFD3B0',
     },
   },
   plugins: [],

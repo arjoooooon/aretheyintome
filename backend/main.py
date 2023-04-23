@@ -2,6 +2,8 @@ from flask import Flask, request, jsonify
 from flask_cors import CORS
 import json
 import cohere
+
+import backend.cohere_classifier2 as cohere_classifier2
 from cohere_classifier import classify_friendzone
 
 app = Flask(__name__)
