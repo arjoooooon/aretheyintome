@@ -98,16 +98,21 @@ export default function Home() {
             </p>
           </div>
         </div>
-        <div className="flex justify-center items-center h-screen">
-          <div className="w-8/12">
-            <div className="text-secondary font-bold text-xl">Add your message history</div>
-            <FormComponent updateResponse={setResponse}/>
+        <div className="flex justify-center pt-10 auto-cols-2">
+          <div className='sm:justify-left w-5/12 px-10 mt-10'>
+            <div className='text-gray-100 font-bold text-primary'>Add Your Conversation Here</div>
+            <div className="grid grid-flow-col w-12/12">
+              <FormComponent updateResponse={setResponse} />
+            </div>
           </div>
-        </div>
-        <div>
-          <div>{response.prediction}</div>
-          <div>{response.confidence}</div>
-          <div>{response.reason}</div>
+          <div className='flex justify-center pt-10 auto-cols h-screen'>
+            <div className='sm:justify-left w-5/12 px-10 mt-10'>
+              <div className='text-gray-100 font-bold text-primary'>Are they into you?<br /></div>
+              <div className='text-secondary mt-5'>
+                {response.reason}
+              </div>
+            </div>
+          </div>
         </div>
       </div>
     </main>

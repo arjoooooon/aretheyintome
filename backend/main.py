@@ -19,15 +19,14 @@ def index():
 def classify():
     data = json.loads(request.data)
     text = data['text']
-
+    
     pre_output = classify_friendzone([text])
-    output = but_why(pre_output, text)
-    print(output)
+    output = but_why(pre_output, [text])
 
     result = {
             "prediction": pre_output[0].prediction,
             "confidence": pre_output[0].confidence,
-            "reason": output.choices[0].text
+            "reason": output
             } 
 
     return jsonify(result)
