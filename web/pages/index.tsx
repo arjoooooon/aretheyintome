@@ -34,7 +34,7 @@ export default function Home() {
                 <div className="text-xl font-bold text-primary">
                   <Typewriter
                     options={{
-                      strings: ['Hey cutie ;)', 'Wanna grab some coffee?'],
+                      strings: ['Heya ;)', 'Wanna grab some coffee?', 'Aw you\'re such a good frienddd'],
                       autoStart: true,
                       loop: true,
                     }}
