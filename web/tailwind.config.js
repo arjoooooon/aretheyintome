@@ -42,6 +42,7 @@ module.exports = {
       background:'#FFE7E8', //'#FFE8E8',//'#F4BDBD',//'#F3E2E6',//'#FFF9DE',////
       background_secondary: '#EBC4C4',//'#FFD3B0',
     },
+    
   },
   plugins: [],
 }
