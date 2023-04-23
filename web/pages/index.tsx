@@ -6,9 +6,6 @@ import Image from 'next/image';
 
 import LeftLogo from '../assets/leftLogo.png';
 import RightLogo from '../assets/rightLogo.png';
-import LeftQuestion from '../assets/questionLeft.png';
-import RightQuestion from '../assets/questionRight.png';
-
 
 const inter = Inter({ subsets: ['latin'] })
 const homeMessages = [
@@ -34,8 +31,8 @@ const ImageAnimation = () => {
 
   return (
     <div>
-      {left && <Image src={LeftQuestion} alt="left logo" width={200} height={200} />}
-      {!left && <Image src={RightQuestion} alt="right logo" width={200} height={200} />}
+      {left && <Image src={LeftLogo} alt="left logo" width={100} height={200} />}
+      {!left && <Image src={RightLogo} alt="right logo" width={100} height={200} />}
     </div>
   )
 }
@@ -45,7 +42,7 @@ export default function Home() {
   return (
     <main>
       <Header />
-      <div className="relative isolate h-screen w-screen bg-background font-mono">
+      <div className="relative isolate h-screen w-screen bg-background font-courier">
         <div className="flex justify-center lg:py-56">
           <div className="text-center">
             <ImageAnimation />
@@ -55,7 +52,7 @@ export default function Home() {
             <br />
             <div className="flex justify-center">
               <div>
-                <div className="text-xl rounded-full px-5 py-1 bg-message_gray text-black font-sans">
+                <div className="text-xl rounded-full px-5 py-1 bg-message_gray text-black font-helvetica">
                   <Typewriter
                     options={{
                       strings: homeMessages,
