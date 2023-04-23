@@ -6,7 +6,9 @@ import Image from 'next/image';
 
 import LeftLogo from '../assets/leftLogo.png';
 import RightLogo from '../assets/rightLogo.png';
+
 import FlirtGif from '../assets/flirt.gif';
+import HeartbreakGif from '../assets/heartbreak.gif'
 import BufferingGif from '../assets/buffering.gif';
 
 const inter = Inter({ subsets: ['latin'] })
@@ -33,6 +35,7 @@ const FormComponent = (props) => {
   }, [text])
 
   const submitForm = (e) => {
+    props.updateResponse({ 'prediction': 'NA', 'confidence': 0, 'reason': 'Nothing to see here...yet!' })
     e.preventDefault();
     console.log(text);
 
@@ -65,17 +68,26 @@ const FormComponent = (props) => {
 }
 
 const DataReport = (props) => {
+  const [done, setDone] = useState(false)
+  useEffect(() => { setTimeout(() => setDone(true), 2000) }, [])
+
   return (
     <div className='w-96'>
-      <span className='text-primary'>
-        Classification:   
-      </span>
-      <span className='text-secondary text-2xl ml-5 w-96'>
-        {props.response.prediction} ({(props.response.confidence*100).toFixed(1)}%)
-      </span>
-      <p className='w-33 text-primary mt-5'>
-        {props.response.reason}
-      </p>
+      {!done ? ((props.response.prediction === 'flirt') ?
+        <Image src={FlirtGif} width={250} height={250} alt="Flirt Gif" /> :
+        <Image src={HeartbreakGif} width={250} height={250} alt="Heartbreak Gif" />) :
+        <div>
+          <span className='text-primary'>
+            Classification:
+          </span>
+          <span className='text-secondary text-2xl ml-5 w-96'>
+            {props.response.prediction} ({(props.response.confidence * 100).toFixed(1)}%)
+          </span>
+          <p className='w-33 text-primary mt-5'>
+            {props.response.reason}
+          </p>
+        </div>
+      }
     </div>
   )
 }
@@ -114,7 +126,7 @@ export default function Home() {
             </p>
           </div>
         </div>
-        <div className='w-screen h-screen'>
+        <div className='w-screen h-9/12'>
           <div className="flex justify-center pt-10 auto-cols-2">
             <div className='sm:justify-left w-5/12 px-10 mt-10'>
               <div className='text-gray-100 font-bold text-primary'>Add Your Conversation Here</div>
