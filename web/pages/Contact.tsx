@@ -1,5 +1,6 @@
 import Image from 'next/image'
 import { Inter } from 'next/font/google'
+import Header from '../components/header';
 
 const inter = Inter({ subsets: ['latin'] })
 
@@ -14,36 +15,8 @@ const MessageText = () => {
 export default function Contact() {
     return (
         <main>
-      <header>
-        <nav className="px-4 lg:px-6 py-2.5 bg-background_secondary">
-          <div className="flex flex-wrap justify-between items-center mx-auto max-w-screen-xl">
-            <a href = "/">
-              <img src="" className="mr-3 h-6 sm:h-9" alt="Logo" />
-              <span className="self-center text-xl font-semibold whitespace-nowrap dark:text-white">Are They Into Me</span>
-            </a>
-            <div className="hidden justify-between items-center w-full lg:flex lg:w-auto lg:order-1" id="mobile-menu-2">
-              <ul className="flex flex-col mt-4 font-medium lg:flex-row lg:space-x-8 lg:mt-0">
-                <li>
-                  <a href="/ForLove" className="block py-2 pr-4 pl-3 text-gray-700 border-b border-gray-100 hover:bg-gray-50 lg:hover:bg-transparent lg:border-0 lg:hover:text-primary-700 lg:p-0 dark:text-gray-400 lg:dark:hover:text-white dark:hover:bg-gray-700 dark:hover:text-white lg:dark:hover:bg-transparent dark:border-gray-700">For Love</a>
-                </li>
-                <li>
-                  <a href="#" className="block py-2 pr-4 pl-3 text-gray-700 border-b border-gray-100 hover:bg-gray-50 lg:hover:bg-transparent lg:border-0 lg:hover:text-primary-700 lg:p-0 dark:text-gray-400 lg:dark:hover:text-white dark:hover:bg-gray-700 dark:hover:text-white lg:dark:hover:bg-transparent dark:border-gray-700">For Work</a>
-                </li>
-                <li>
-                  <a href="#" className="block py-2 pr-4 pl-3 text-gray-700 border-b border-gray-100 hover:bg-gray-50 lg:hover:bg-transparent lg:border-0 lg:hover:text-primary-700 lg:p-0 dark:text-gray-400 lg:dark:hover:text-white dark:hover:bg-gray-700 dark:hover:text-white lg:dark:hover:bg-transparent dark:border-gray-700">For Friendship</a>
-                </li>
-                <li>
-                  <a href="/Contact" className="block py-2 pr-4 pl-3 text-gray-700 border-b border-gray-100 hover:bg-gray-50 lg:hover:bg-transparent lg:border-0 lg:hover:text-primary-700 lg:p-0 dark:text-gray-400 lg:dark:hover:text-white dark:hover:bg-gray-700 dark:hover:text-white lg:dark:hover:bg-transparent dark:border-gray-700">Contact</a>
-                </li>
-                <li>
-                  <a href="/AboutUs" className="block py-2 pr-4 pl-3 text-gray-700 border-b border-gray-100 hover:bg-gray-50 lg:hover:bg-transparent lg:border-0 lg:hover:text-primary-700 lg:p-0 dark:text-gray-400 lg:dark:hover:text-white dark:hover:bg-gray-700 dark:hover:text-white lg:dark:hover:bg-transparent dark:border-gray-700">About Us</a>
-                </li>
-              </ul>
-            </div>
-          </div>
-        </nav>
-      </header>
-            <div className="container my-auto mx-auto px-6 bg-background w-screen h-screen">
+            <Header />
+            <div className="relative isolate h-screen w-screen lg:py-10 px-20 bg-background">
                 <section className="mb-32 text-gray-800">
                     <div className="flex flex-wrap">
                         <div className="grow-0 shrink-0 basis-auto mb-12 md:mb-0 w-full md:w-7/12 px-3 lg:px-6">
@@ -51,34 +24,35 @@ export default function Contact() {
                             <p className="font-bold mb-2">How to contribute to our dataset?</p>
                             <p className="text-gray-500 mb-6">
                                 We love people contributing!
-                                Love it very much.
-
-                                very very much.
+                                If you are willing to contribute your chat data to us, you can help improve the accuracy and effectiveness of our model.
+                                We understand that privacy is important, and we want to assure you that we will take all necessary measures to protect your privacy. We will anonymize all data and remove any identifying information before using it for our model.
+                                Your contributions are incredibly valuable to us, and we appreciate them very much. With your help, we can build a more accurate model that provides helpful suggestions.
                             </p>
-                            <p className="font-bold mb-2">Non cupidatat skateboard dolor brunch?</p>
+                            <p className="font-bold mb-2">Join Us</p>
                             <p className="text-gray-500 mb-6">
-                                Distinctio corporis, iure facere ducimus quos consectetur ipsa ut
-                                magnam autem doloremque ex! Id, sequi. Voluptatum magnam sed fugit
-                                iusto minus et suscipit? Minima sunt at nulla tenetur, numquam
-                                unde quod modi magnam ab deserunt ipsam sint aliquid dolores
-                                libero repellendus cupiditate mollitia quidem dolorem odit
+                                Work where your mind matters.<br/>
+                                Learn more about who we are, where we're hiring, what it's like to work here,
+                                and what we offer our employees. When you're ready, submit your resume to apply.
+
                             </p>
                             <p className="font-bold mb-2">
-                                Praesentium voluptatibus temporibus consequatur non aspernatur?
+                                Ways to Give
                             </p>
                             <p className="text-gray-500 mb-6">
-                                Minima sunt at nulla tenetur, numquam unde quod modi magnam ab
-                                deserunt ipsam sint aliquid dolores libero repellendus cupiditate
-                                mollitia quidem dolorem.
-                            </p>
+                                If you'd like to send a gift through mail, please mail your check to:<br/>
 
-                            <p className="font-bold mb-2">
-                                Voluptatum magnam sed fugit iusto minus et suscipit?
-                            </p>
-                            <p className="text-gray-500">
-                                Laudantium perferendis, est alias iure ut veniam suscipit dolorem
-                                fugit. Et ipsam corporis earum ea ut quae cum non iusto blanditiis
-                                ipsum dolor eius reiciendis, velit adipisci quas.
+                                Box 511,<br/>
+                                301 Platt Blvd<br/>
+                                Claremont, CA 91711<br/>
+
+                                Giving Stocks and/or Mutual Funds<br/>
+
+                                Giving stock that has appreciated and you have held for at least one year can be one of the smartest ways to make a gift. You not only obtain a deduction for the full-fair market value of the stock.
+                                The objective is to transfer the shares to AreTheyIntoMe rather than sell the shares and forward us the proceeds. The transfer process varies slightly depending on whether or not the stock certificates are in your possession.
+                                To initiate a transfer of stock and/or mutual funds to ARIM, please submit the form on the right.
+                                Please note that stock gifts may take 3-4 business days to transfer. On average, mutual funds take 3-4 weeks to be received by AreThyIntoMe.
+
+
                             </p>
                         </div>
                         <div className="grow-0 shrink-0 basis-auto w-full md:w-5/12 px-3 lg:px-6">

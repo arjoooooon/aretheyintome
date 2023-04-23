@@ -10,7 +10,8 @@ const homeMessages = [
   "I'm kinda busy",
   'I have a boyfriend',
   'Is that an invitation?',
-  "I thought you'd never ask <3"
+  "I thought you'd never ask <3",
+  "Do you want to play heads up with me?"
 ]
 
 
@@ -18,8 +19,8 @@ export default function Home() {
   return (
     <main>
       <Header /> 
-      <div className="relative isolate h-screen w-screen">
-        <div className="w-screen h-screen lg:py-56 bg-background">
+      <div className="relative isolate h-screen w-screen bg-background">
+        <div className="lg:py-56">
           <div className="text-center">
             <h1 className="text-4xl font-bold tracking-tight text-gray-900 sm:text-6xl text-primary">
               Are They Into Me?
