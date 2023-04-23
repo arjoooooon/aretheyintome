@@ -19,6 +19,7 @@ const homeMessages = [
   "Ew, no."
 ]
 
+
 const ImageAnimation = () => {
   const [left, setLeft] = useState(false)
   useEffect(() => {
@@ -37,13 +38,57 @@ const ImageAnimation = () => {
   )
 }
 
+const FormComponent = (props) => {
+  const [text, setText] = useState('')
+
+  const handleKeyDown = (e) => {
+    e.target.style.height = 'inherit';
+    e.target.style.height = `${e.target.scrollHeight}px`; 
+    // In case you have a limitation
+    // e.target.style.height = `${Math.min(e.target.scrollHeight, limit)}px`;
+  }
+
+  const submitForm = (e) => {
+    e.preventDefault();
+    console.log(text);
+
+    fetch('http://localhost:8080/classify', { //54.153.67.179
+      method: 'POST',
+      headers: {
+        'Accept': 'application/json',
+        'Content-Type': 'application/json'
+      },
+      body: JSON.stringify({ "text": text })
+    })
+      .then(response => response.json())
+      .then(response => props.updateResponse(response));
+  }
+
+  return (
+    <div>
+      <form onSubmit={submitForm}>
+        <br />
+        <div>
+          <textarea onChange={(e) => {e.preventDefault(); handleKeyDown(e)}} className="textarea-lg py-2 px-2 w-full text-sm appearance-none text-primary" value={text} onChange={(e) => setText(e.target.value)}></textarea>
+        </div>
+        <br />
+        <button className="relative hover:bg-gray-100 text-primary font-semibold py-2 px-4 border border-gray-400 rounded shadow" onClick={submitForm}>
+          Find Out!
+        </button>
+      </form>
+    </div>
+  );
+}
+
 
 export default function Home() {
+  const [response, setResponse] = useState({ 'reason': 'Nothing to see here...yet!' })
+
   return (
     <main>
       <Header />
-      <div className="relative isolate h-screen w-screen bg-background font-courier">
-        <div className="flex justify-center lg:py-56">
+      <div className="relative isolate h-fit w-screen bg-background font-courier">
+        <div className="flex justify-center lg:py-52">
           <div className="text-center">
             <ImageAnimation />
             <h1 className="text-4xl font-bold tracking-tight text-gray-900 sm:text-6xl text-primary">
@@ -70,18 +115,12 @@ export default function Home() {
             </p>
           </div>
         </div>
-        {/* <div
-          className="absolute inset-x-0 top-[calc(100%-13rem)] -z-10 transform-gpu overflow-hidden blur-3xl sm:top-[calc(100%-30rem)]"
-          aria-hidden="true"
-        >
-          <div
-            className="relative left-[calc(50%+3rem)] aspect-[1155/678] w-[36.125rem] -translate-x-1/2 bg-gradient-to-tr from-[#ff80b5] to-[#9089fc] opacity-30 sm:left-[calc(50%+36rem)] sm:w-[72.1875rem]"
-            style={{
-              clipPath:
-                'polygon(74.1% 44.1%, 100% 61.6%, 97.5% 26.9%, 85.5% 0.1%, 80.7% 2%, 72.5% 32.5%, 60.2% 62.4%, 52.4% 68.1%, 47.5% 58.3%, 45.2% 34.5%, 27.5% 76.7%, 0.1% 64.9%, 17.9% 100%, 27.6% 76.8%, 76.1% 97.7%, 74.1% 44.1%)',
-            }}
-          />
-        </div> */}
+        <div className="flex justify-center items-center h-screen">
+          <div className="w-8/12">
+            <div className="text-secondary font-bold text-xl">Add your message history</div>
+            <FormComponent />
+          </div>
+        </div>
       </div>
     </main>
   )

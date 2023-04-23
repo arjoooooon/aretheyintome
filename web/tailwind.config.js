@@ -22,7 +22,7 @@ module.exports = {
         secondary: '#FF6969',
         background: '#FFE7E8', //'#FFE8E8',//'#F4BDBD',//'#F3E2E6',//'#FFF9DE',////
         background_secondary: '#EBC4C4',//'#FFD3B0',
-        message_gray: '#ece4ec',//'#f4f4fa'
+        message_gray: '#FFF8F9',//'#f4f4fa'
         cursor_gray: '#524444'
       },
       keyframes: {
