@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useRef } from 'react';
 import { Inter } from 'next/font/google';
 import Typewriter from 'typewriter-effect';
 import Header from '../components/header';
@@ -40,13 +40,14 @@ const ImageAnimation = () => {
 
 const FormComponent = (props) => {
   const [text, setText] = useState('')
+  const textAreaRef = useRef(null)
 
-  const handleKeyDown = (e) => {
-    e.target.style.height = 'inherit';
-    e.target.style.height = `${e.target.scrollHeight}px`; 
-    // In case you have a limitation
-    // e.target.style.height = `${Math.min(e.target.scrollHeight, limit)}px`;
-  }
+  useEffect(() => {
+    const scrollHeight = textAreaRef.current.scrollHeight;
+    let height = Math.max(scrollHeight, 50);
+    height = Math.min(height, 200);
+    textAreaRef.current.style.height = height + "px";
+  }, [text])
 
   const submitForm = (e) => {
     e.preventDefault();
@@ -69,7 +70,7 @@ const FormComponent = (props) => {
       <form onSubmit={submitForm}>
         <br />
         <div>
-          <textarea onChange={(e) => {e.preventDefault(); handleKeyDown(e)}} className="textarea-lg py-2 px-2 w-full text-sm appearance-none text-primary" value={text} onChange={(e) => setText(e.target.value)}></textarea>
+          <textarea ref={textAreaRef} className="textarea-lg py-2 px-2 w-full text-md appearance-none text-primary" value={text} onChange={(e) => setText(e.target.value)}></textarea>
         </div>
         <br />
         <button className="relative hover:bg-gray-100 text-primary font-semibold py-2 px-4 border border-gray-400 rounded shadow" onClick={submitForm}>
