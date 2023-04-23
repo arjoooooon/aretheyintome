@@ -1,5 +1,6 @@
 import Image from "next/image";
 import Logo from '../assets/logo.png';
+
 import React from 'react';
 
 export default function Header() {
@@ -8,7 +9,7 @@ export default function Header() {
         <nav className="px-4 lg:px-6 py-2.5 bg-background_secondary">
           <div className="flex flex-wrap justify-between items-center mx-auto max-w-screen-xl">
             <a href="/" className="flex inline">
-              <Image src={Logo} alt="logo" width={50} height={50} />
+              <Image src={Logo} alt="logo" width={70} height={70} />
               <span className="self-center text-m font-semibold whitespace-nowrap dark:text-white ml-3">AreTheyIntoMe</span>
             </a>
             <div className="hidden justify-between items-center w-full lg:flex lg:w-auto lg:order-1" id="mobile-menu-2">
