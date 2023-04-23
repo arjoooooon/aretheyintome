@@ -52,7 +52,7 @@ def generate_text(user_prompt):
 def but_why(responses, inputs):
     """List of inputs and cohere's responses, cohere will explain why for each one"""
     #pdb.set_trace()
-    prompt = "Answer the following prompts as if you are talking to a romantically unsuccessful college CS major (likely male) who is frustrated."
+    prompt = "Answer the following prompts as if you are talking to a romantically unsuccessful college CS major (likely male) who is frustrated. Don't mention any of the details that were just mentioned."
     for i, response in enumerate(responses):
         prompt = prompt + str(i+1) + f". Explain why this text conversation was classified as \"{response.prediction}\" with {round(response.confidence,3)} confidence: {inputs[i]}. Provide example phrases from the prompt, i.e. say this is not flirty because the phrase (blank) indicates..."
     #prompt += "\n This is an example answer you can use: \'This conversation was classified as \"friendzone\" with a 0.977 confidence. This means that the conversation was clearly not flirtatious and indicated that the person was not interested in a romantic relationship. The phrase \"Hey I think you\'re really cute btw :)\" is a clear expression of interest, but the response \"aww you\'re such a good friend\" indicates that the other person sees the sender only as a friend and is not interested in taking things further.\'"

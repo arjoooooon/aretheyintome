@@ -5,27 +5,27 @@ import Header from '../components/header';
 const inter = Inter({ subsets: ['latin'] })
 
 interface FormControl {
-    updateResponse: (text: string) => void;
+  updateResponse: (text: string) => void;
 }
 
 const FormComponent = (props: FormControl) => {
-    const [text, setText] = useState('')
+  const [text, setText] = useState('')
 
-    const submitForm = (e) => {
-        e.preventDefault();
-        console.log(text);
+  const submitForm = (e) => {
+    e.preventDefault();
+    console.log(text);
 
-        fetch('http://localhost:8080/classify', {
-            method: 'POST',
-            headers: {
-                'Accept': 'application/json',
-                'Content-Type': 'application/json'
-            },
-            body: JSON.stringify({ "text": text })
-        })
-            .then(response => response.json())
-            .then(response => props.updateResponse(response.prediction));
-    }
+    fetch('http://localhost:8080/classify', {
+      method: 'POST',
+      headers: {
+        'Accept': 'application/json',
+        'Content-Type': 'application/json'
+      },
+      body: JSON.stringify({ "text": text })
+    })
+      .then(response => response.json())
+      .then(response => props.updateResponse(response.prediction));
+  }
 
     return (
         <div>
@@ -43,26 +43,23 @@ const FormComponent = (props: FormControl) => {
     );
 }
 export default function ForLove() {
-    const [response, setResponse] = useState('');
+  const [response, setResponse] = useState('');
 
-    return (
-        <main>
-            <Header />
-            <div id='pageWrapper' className='w-screen h-screen bg-background'>
-                <div className="flex justify-center pt-10 auto-cols-2">
-                <div className='sm:justify-left w-5/12 px-10 mt-10'>
-                <div className='text-gray-100 font-bold text-primary'>Add Your Conversation Here</div>
-                    <div className="grid grid-flow-col w-12/12">
-                        <FormComponent updateResponse={setResponse} />
-                    </div>
-                    </div>
-                    <div className='sm:justify-left w-5/12 px-10 mt-10'>
-                        <div className='text-gray-100 font-bold text-primary'>Response
-                            {response}
-                        </div>
-                    </div>
-                </div>
+  return (
+    <main>
+      <Header /> 
+      <div id='pageWrapper' className='w-screen h-screen bg-background'>
+        <div className="flex justify-center pt-10">
+          <div className="grid grid-flow-col auto-cols-2 w-8/12">
+            <FormComponent updateResponse={setResponse} />
+            <div className='sm:justify-left px-10 mt-10'>
+              <div className='text-gray-100 font-bold text-primary'>Response
+                {response}
+              </div>
             </div>
-        </main>
-    )
+          </div>
+        </div>
+      </div>
+    </main>
+  )
 }

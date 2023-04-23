@@ -3,8 +3,7 @@ from flask_cors import CORS
 import json
 import cohere
 
-import backend.cohere_classifier2 as cohere_classifier2
-from cohere_classifier import classify_friendzone
+from cohere_classifier import classify_friendzone, but_why
 
 app = Flask(__name__)
 CORS(app)
@@ -18,16 +17,16 @@ def classify():
     data = json.loads(request.data)
     text = data['text']
 
-    result = classify_friendzone([text])
-    prediction = result[0].prediction
-    confidence = result[0].confidence
-    
-    returned = jsonify({
-        'prediction': prediction,
-        'confidence': confidence
-        })
+    pre_output = classify_friendzone([text])
+    output = but_why(pre_output, text)
 
-    return returned
+    result = {
+            "prediction": pre_output[0].prediction,
+            "confidence": pre_output[0].confidence,
+            "reason": output
+            } 
+
+    return jsonify(result)
 
 
 app.run(host="0.0.0.0", port=8080)
