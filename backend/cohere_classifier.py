@@ -5,10 +5,14 @@ import pandas as pd
 from cohere.responses.classify import Example
 import pdb
 import openai
+import os
 
 # KEY: IDe9sxtoBbwIUzsrdF3r85Q8lXuA7YlhQi3CKx35
 api_key = 'IDe9sxtoBbwIUzsrdF3r85Q8lXuA7YlhQi3CKx35'
 co = cohere.Client(api_key)
+
+# OPENAI
+openai.api_key_path = './.env'
 
 # HUGGING FACE
 

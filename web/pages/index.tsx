@@ -65,7 +65,7 @@ const FormComponent = (props) => {
 
 
 export default function Home() {
-  const [response, setResponse] = useState({ 'reason': 'Nothing to see here...yet!' })
+  const [response, setResponse] = useState({ 'prediction': 'NA', 'confidence': 0, 'reason': 'Nothing to see here...yet!' })
 
   return (
     <main>
@@ -101,8 +101,13 @@ export default function Home() {
         <div className="flex justify-center items-center h-screen">
           <div className="w-8/12">
             <div className="text-secondary font-bold text-xl">Add your message history</div>
-            <FormComponent />
+            <FormComponent updateResponse={setResponse}/>
           </div>
+        </div>
+        <div>
+          <div>{response.prediction}</div>
+          <div>{response.confidence}</div>
+          <div>{response.reason}</div>
         </div>
       </div>
     </main>
