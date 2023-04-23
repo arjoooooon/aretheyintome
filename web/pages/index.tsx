@@ -6,6 +6,9 @@ import Image from 'next/image';
 
 import LeftLogo from '../assets/leftLogo.png';
 import RightLogo from '../assets/rightLogo.png';
+import LeftQuestion from '../assets/questionLeft.png';
+import RightQuestion from '../assets/questionRight.png';
+
 
 const inter = Inter({ subsets: ['latin'] })
 const homeMessages = [
@@ -31,8 +34,8 @@ const ImageAnimation = () => {
 
   return (
     <div>
-      {left && <Image src={LeftLogo} alt="left logo" width={200} height={200} />}
-      {!left && <Image src={RightLogo} alt="right logo" width={200} height={200} />}
+      {left && <Image src={LeftQuestion} alt="left logo" width={200} height={200} />}
+      {!left && <Image src={RightQuestion} alt="right logo" width={200} height={200} />}
     </div>
   )
 }
