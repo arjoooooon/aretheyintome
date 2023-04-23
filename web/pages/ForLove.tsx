@@ -53,6 +53,8 @@ export default function ForLove() {
                     </div>
                     </div>
                     <div className='sm:justify-left w-5/12 px-10 mt-10'>
+                    <div className='text-gray-100 font-bold text-primary'>Flirty or Not <br/></div>
+                    <p> We are using a trail API key, which limited 5 API calls per minutes.</p>
                         <div className='text-gray-100 font-bold text-primary'>
                             {response.reason}
                         </div>
