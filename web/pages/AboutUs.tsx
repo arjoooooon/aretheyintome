@@ -29,7 +29,7 @@ export default function AboutUs() {
                     Our team consists of talented and experienced developers, designers, and project managers who are passionate about what they do. We value collaboration and creativity, and we are constantly pushing ourselves to learn and grow.
                 </p>
                 <p className="text-lg mb-4">
-                    We believe that the success of our clients is our success, and we are dedicated to helping them achieve their goals. Whether you're a small startup or a large corporation, we have the expertise and resources to help you succeed.
+                    We believe that the success of our clients is our success, and we are dedicated to helping them achieve their goals. Whether you&aposre a small startup or a large corporation, we have the expertise and resources to help you succeed.
                 </p>
             </div>
         </main>

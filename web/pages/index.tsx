@@ -23,7 +23,7 @@ const homeMessages = [
   "Ew, no."
 ]
 
-const FormComponent = (props) => {
+const FormComponent = (props: any) => {
   const [text, setText] = useState('')
   const textAreaRef = useRef(null)
 
@@ -34,7 +34,7 @@ const FormComponent = (props) => {
     textAreaRef.current.style.height = height + "px";
   }, [text])
 
-  const submitForm = (e) => {
+  const submitForm = (e: any) => {
     props.updateResponse({ 'prediction': 'NA', 'confidence': 0, 'reason': 'Nothing to see here...yet!' })
     e.preventDefault();
     console.log(text);
@@ -67,7 +67,7 @@ const FormComponent = (props) => {
   );
 }
 
-const DataReport = (props) => {
+const DataReport = (props: any) => {
   const [done, setDone] = useState(false)
   useEffect(() => { setTimeout(() => setDone(true), 2000) }, [])
 

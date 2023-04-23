@@ -4,10 +4,10 @@ import Header from '../components/header';
 
 const inter = Inter({ subsets: ['latin'] })
 
-const FormComponent = (props) => {
+const FormComponent = (props: any) => {
   const [text, setText] = useState('')
 
-  const submitForm = (e) => {
+  const submitForm = (e: any) => {
     e.preventDefault();
     console.log(text);
 
