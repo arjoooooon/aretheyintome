@@ -49,17 +49,20 @@ export default function ForLove() {
     <main>
       <Header /> 
       <div id='pageWrapper' className='w-screen h-screen bg-background'>
-        <div className="flex justify-center pt-10">
-          <div className="grid grid-flow-col auto-cols-2 w-8/12">
-            <FormComponent updateResponse={setResponse} />
-            <div className='sm:justify-left px-10 mt-10'>
-              <div className='text-gray-100 font-bold text-primary'>Response
-                {response}
-              </div>
+                <div className="flex justify-center pt-10 auto-cols-2">
+                <div className='sm:justify-left w-5/12 px-10 mt-10'>
+                <div className='text-gray-100 font-bold text-primary'>Add Your Conversation Here</div>
+                    <div className="grid grid-flow-col w-12/12">
+                        <FormComponent updateResponse={setResponse} />
+                    </div>
+                    </div>
+                    <div className='sm:justify-left w-5/12 px-10 mt-10'>
+                        <div className='text-gray-100 font-bold text-primary'>Response
+                            {response}
+                        </div>
+                    </div>
+                </div>
             </div>
-          </div>
-        </div>
-      </div>
     </main>
   )
 }
