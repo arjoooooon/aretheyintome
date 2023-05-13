@@ -39,7 +39,7 @@ const FormComponent = (props: any) => {
     e.preventDefault();
     console.log(text);
 
-    fetch('http://54.153.67.179:8080/classify', { //54.153.67.179
+    fetch('https://aretheyintome.arjuntaneja.com:8080/classify', {
       method: 'POST',
       headers: {
         'Accept': 'application/json',
@@ -129,7 +129,7 @@ export default function Home() {
         <div className='w-screen h-9/12'>
           <div className="flex justify-center pt-10 auto-cols-2">
             <div className='sm:justify-left w-5/12 px-10 mt-10'>
-              <div className='text-gray-100 font-bold text-primary'>Add Your Conversation Here</div>
+              <div className='text-gray-100 font-bold text-primary'>Add your conversation here:</div>
               <div className="grid grid-flow-col w-12/12">
                 <FormComponent updateResponse={setResponse} />
               </div>
